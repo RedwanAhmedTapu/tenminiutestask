@@ -9,6 +9,7 @@ import FeatureExplanationSection from "@/components/FeatureExplanation";
 import CourseOverviewSection from "@/components/CourseOverviewSection";
 import { fetchProductData } from "@/utils/api";
 import DOMPurify from "isomorphic-dompurify";
+import CourseDetails from "./CourseDetails";
 
 export default function CoursePageClient({ lang }: { lang: string }) {
   const [isSticky, setIsSticky] = useState(false);
@@ -56,6 +57,9 @@ export default function CoursePageClient({ lang }: { lang: string }) {
   const featureExplanationsSection = productData.sections.find(
     (s: any) => s.type === "feature_explanations"
   );
+  const courseDetails = productData.sections.find(
+    (s: any) => s.type === "about"
+  );
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50 scroll-smooth relative">
@@ -88,19 +92,19 @@ export default function CoursePageClient({ lang }: { lang: string }) {
           </div>
         </div>
       </section>
- {/* Mobile Overview Panel - Hidden on desktop */}
-          {isMobile && (
-            <div className="md:hidden bg-white border border-gray-200 rounded-lg shadow-sm p-4 mb-16">
-              <CourseOverviewSection
-                title={productData.title}
-                description={productData.description}
-                media={productData.media}
-                checklist={productData.checklist}
-                ctaText={productData.cta_text}
-                mobileView
-              />
-            </div>
-          )}
+      {/* Mobile Overview Panel - Hidden on desktop */}
+      {isMobile && (
+        <div className="md:hidden bg-white border border-gray-200 rounded-lg shadow-sm p-4 mb-16">
+          <CourseOverviewSection
+            title={productData.title}
+            description={productData.description}
+            media={productData.media}
+            checklist={productData.checklist}
+            ctaText={productData.cta_text}
+            mobileView
+          />
+        </div>
+      )}
 
       {/* Sticky Overview Section - Desktop only */}
       {!isMobile && (
@@ -167,9 +171,15 @@ export default function CoursePageClient({ lang }: { lang: string }) {
                 />
               </div>
             )}
+            {courseDetails && (
+              <div id={`section-${courseDetails.order_idx}`}>
+                <CourseDetails
+                  title={courseDetails.name || "Course Details"}
+                  values={courseDetails.values || []}
+                />
+              </div>
+            )}
           </div>
-
-         
         </div>
       </main>
     </div>

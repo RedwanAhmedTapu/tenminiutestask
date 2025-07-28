@@ -1,6 +1,13 @@
-import CoursePageClient from '@/components/CoursePageClient';
 import React from 'react';
+import CoursePageClient from '@/components/CoursePageClient';
 
-export default function ProductPage({ params }: { params: { lang: string } }) {
+interface PageProps {
+  params: {
+    lang: string;
+  };
+}
+
+export default async function ProductPage({ params }: PageProps) {
+  // You could preload data here if you want to pass to client
   return <CoursePageClient lang={params.lang} />;
 }

@@ -19,7 +19,7 @@ const FeatureExplanationSection: React.FC<FeatureExplanationSectionProps> = ({
   features,
 }) => {
   return (
-      <div className="container mx-auto px-4 ">
+      <div className="container md:max-w-xl lg:max-w-2xl xl:max-w-3xl px-4 ">
         <h2 className="text-2xl text-gray-800 font-bold mb-2 ">{title}</h2>
 
         <div className="border border-gray-300 rounded-lg overflow-hidden">

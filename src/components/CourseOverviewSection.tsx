@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Media, Checklist, CtaText } from '@/types/apiTypes';
 import CourseStickyPanel from './CourseStickyPanel';
-import CourseMediaPreview from './CoursemediaPreview';
+import CourseMediaPreview from './CourseMediaPreview';
 
 interface Props {
   title: string;

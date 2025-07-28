@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { Media, Checklist, CtaText } from "@/types/apiTypes";
 import Image from "next/image";
-import CourseMediaPreview from './CoursemediaPreview';
+import CourseMediaPreview from "./CourseMediaPreview";
 
 interface Props {
   media: Media[];
